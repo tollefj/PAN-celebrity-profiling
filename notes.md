@@ -56,6 +56,9 @@ This results in the following dataframe:
 |3|1991|star|male|performer|...|
 |...|...|...|...|...|...|
 
+
+This lets us handle each text as an _X_ set, with the labels _birthyear, fame, gender_ and _occupation_ as labels in a _y_ set.
+
 ## data preprocessing
 
 We now want to clean the text files before continuing, this is done with several functions, applied using the `.apply` function for the `'text'` row of the dataframe. These mostly use regex to clean punctuation, mentions in tweets, and other data we deemed irrelevant before letting the machine scour through the data.
@@ -65,4 +68,4 @@ NLTK provides us with stopwords and a stemmer. The stemmer (snowballstemmer: htt
 We split the data 80:20 (train:test) using sklearn's `train_test_split`, and continued by creating a vectorizer ([TfidfVectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html))to fit all textual data on, before transforming. 
 
 ## classification
-...
+handling multi-label data can be tricky, especially when it includes a big set of different labels, making the network deep. Label powerset, while a solid classification method for this kind of problem, it is not feasible due to the sheer size of unique labels, especially in the "birthyear" column. The "occupation" column also includes 7 different labels.
